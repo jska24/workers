@@ -1,0 +1,72 @@
+// class Worker, tab
+using System;
+using System.Threading;
+
+
+namespace Workers
+{
+    public class Worker
+    {
+        public String name;
+        public String surname;
+        public int age;
+        private double salary;
+
+        public Worker(String n, string s, int a, double sal)
+        {
+            name = n;
+            surname = s;
+            age = a;
+            salary = sal;
+        }
+        public void ShowWorker()
+        {
+            Console.WriteLine("{0} {1}, age: {2}, salary: {3}", name, surname, age, salary);
+        }
+    }
+
+    class Program
+    {
+        
+        static void Main(string[] args)
+        {
+            int k = 0, i=0;
+            Console.Write("How many workers do will you add? ");
+            try
+            {
+                k = int.Parse(Console.ReadLine());
+            }
+            catch
+            {
+                Console.WriteLine("Wrong number!");
+                Environment.Exit(0);
+            }
+            int[] tab = new int[k];
+            Worker[] W = new Worker[k];
+
+            Console.WriteLine("*** Workers ***\n");
+            for(i=0; i<k; i++)
+            {
+                Console.Write("Name: ");
+                string n = Console.ReadLine();
+                Console.Write("Surname: ");
+                string s = Console.ReadLine();
+                Console.Write("Age: ");
+                int a = int.Parse(Console.ReadLine());
+                Console.Write("Salary: ");
+                double sal = double.Parse(Console.ReadLine());
+                
+                W[i] = new Worker(n, s, a, sal);  
+            }
+            Console.WriteLine();
+           
+
+            for(int j=0; j<k; j++)
+            {
+                W[j].ShowWorker();
+            }
+            
+            Console.WriteLine("\n");
+        }
+    }
+}
